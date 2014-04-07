@@ -1,5 +1,5 @@
 var assert = require("assert")
-var xx = require('../bquery');
+var xx = require('../src/bquery');
 
 describe('xx', function() {
   describe('by default', function() {
