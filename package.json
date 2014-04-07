@@ -1,0 +1,9 @@
+{
+  "name": "BQuery",
+  "description": "JQuery but done the way of Bobby",
+  "author": "Bobby Matson <bobby.matson@gmail.com>",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}
