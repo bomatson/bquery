@@ -1,4 +1,4 @@
-var xx = function (name) {
+var BQuery = function (name) {
 
   switch (true) {
     case (/^#/.test(name)):
@@ -20,3 +20,5 @@ var xx = function (name) {
       return('No element was found on the page');
   }
 }
+
+window.xx = BQuery;

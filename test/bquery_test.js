@@ -6,23 +6,47 @@ describe('xx', function() {
   })
 
   describe('given an id', function() {
-    it('returns the html element with the id', function() {
-      var mocha = document.getElementById('mocha');
-      expect(xx('#mocha')).to.equal(mocha);
+    describe('found on the page', function() {
+      it('returns the html element with the id', function() {
+        var mocha = document.getElementById('mocha');
+        expect(xx('#mocha')).to.equal(mocha);
+      })
+    })
+
+    describe('not found on the page', function() {
+      it('returns null', function() {
+        expect(xx('#id')).to.be.null;
+      })
     })
   })
 
   describe('given a class name', function() {
-    it('returns the html element with the class name', function() {
-      var mocha = document.getElementsByClassName('mocha');
-      expect(xx('.mocha')).to.equal(mocha);
+    describe('found on the page', function() {
+      it('returns the html element with the class name', function() {
+        var mocha = document.getElementsByClassName('mocha');
+        expect(xx('.mocha')).to.equal(mocha);
+      })
+    })
+
+    describe('not found on the page', function() {
+      it('returns an empty array', function() {
+        expect(xx('.class')).to.have.length(0);
+      })
     })
   })
 
   describe('given a tag name', function() {
-    it('returns each html element with that tage name', function() {
-      var mocha = document.getElementsByTagName('div');
-      expect(xx('<div>')).to.equal(mocha);
+    describe('found on the page', function() {
+      it('returns each html element with that tage name', function() {
+        var mocha = document.getElementsByTagName('div');
+        expect(xx('<div>')).to.equal(mocha);
+      })
+    })
+
+    describe('not found on the page', function() {
+      it('returns an empty array', function() {
+        expect(xx('<img>')).to.have.length(0);
+      })
     })
   })
 })
