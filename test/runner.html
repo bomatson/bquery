@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <div class="mocha"></div>
+
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <script>
+    function assert(expr, msg) {
+      if (!expr) throw new Error(msg || 'failed');
+    }
+  </script>
+  <script src="../src/bquery.js"></script>
+  <script src="../test/bquery_test.js"></script>
+  <script>
+    var expect = chai.expect;
+    onload = function(){
+      var runner = mocha.run();
+    };
+  </script>
+</body>
+                                                                                                                                                </html>
