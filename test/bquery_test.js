@@ -1,51 +1,60 @@
 describe('xx', function() {
   describe('by default', function() {
-    it('returns no element on the page', function() {
-      expect(xx()).to.equal('No element was found on the page');
+    it('returns an empty object', function() {
+      expect(xx()).to.have.length(0);
     })
   })
 
   describe('given an id', function() {
     describe('found on the page', function() {
       it('returns the html element with the id', function() {
-        var mocha = document.getElementById('mocha');
-        expect(xx('#mocha')).to.equal(mocha);
+        expect(xx('#find-me')).to.have.length(1);
+      })
+
+      it('returns an html element in the array', function() {
+        expect(xx('#find-me')[0].outerHTML).to.equal("<div id=\"find-me\"></div>");
       })
     })
 
     describe('not found on the page', function() {
       it('returns null', function() {
-        expect(xx('#id')).to.be.null;
+        expect(xx('#missing-id')).to.be.null;
       })
     })
   })
 
   describe('given a class name', function() {
     describe('found on the page', function() {
-      it('returns the html element with the class name', function() {
-        var mocha = document.getElementsByClassName('mocha');
-        expect(xx('.mocha')).to.equal(mocha);
+      it('returns an array with a single object', function() {
+        expect(xx('.find-me')).to.have.length(1)
+      })
+
+      it('returns an html element in the array', function() {
+        expect(xx('.find-me')[0].outerHTML).to.equal("<div class=\"find-me\"></div>");
       })
     })
 
     describe('not found on the page', function() {
       it('returns an empty array', function() {
-        expect(xx('.class')).to.have.length(0);
+        expect(xx('.missing-class')).to.have.length(0);
       })
     })
   })
 
   describe('given a tag name', function() {
     describe('found on the page', function() {
-      it('returns each html element with that tage name', function() {
-        var mocha = document.getElementsByTagName('div');
-        expect(xx('<div>')).to.equal(mocha);
+      it('an array with three div objects', function() {
+        expect(xx('div')).to.have.length(3);
+      })
+
+      it('returns each html element with that tag name', function() {
+        expect(xx('div')[2].outerHTML).to.equal("<div id=\"find-me\"></div>");
       })
     })
 
     describe('not found on the page', function() {
       it('returns an empty array', function() {
-        expect(xx('<img>')).to.have.length(0);
+        expect(xx('img')).to.have.length(0);
       })
     })
   })
