@@ -11,22 +11,26 @@ describe('xx', function() {
         expect(xx('#find-me')).to.have.length(1);
       })
 
-      it('returns an html element in the array', function() {
-        expect(xx('#find-me')[0].outerHTML).to.equal("<div id=\"find-me\"></div>");
+      it('contains the html in elem', function() {
+        expect(xx('#find-me').elem[0]).to.equal("<div id=\"find-me\"></div>");
       })
     })
 
     describe('not found on the page', function() {
-      it('returns null', function() {
-        expect(xx('#missing-id')).to.be.null;
+      it('returns an empty object', function() {
+        expect(xx('#missing-id')).to.have.length(0);
+      })
+
+      xit('returns a bQuery object', function() {
+        expect(xx('#missing-id')).to.be.an.instanceOf(bQuery);
       })
     })
   })
 
   describe('given a class name', function() {
     describe('found on the page', function() {
-      it('returns an array with a single object', function() {
-        expect(xx('.find-me')).to.have.length(1)
+      it('returns an array with two objects', function() {
+        expect(xx('.find-me')).to.have.length(2)
       })
 
       it('returns an html element in the array', function() {
@@ -35,8 +39,8 @@ describe('xx', function() {
     })
 
     describe('not found on the page', function() {
-      it('returns an empty array', function() {
-        expect(xx('.missing-class')).to.have.length(0);
+      it('returns an empty object', function() {
+        expect(xx('.missing-class')).to.be.empty;
       })
     })
   })
@@ -44,7 +48,7 @@ describe('xx', function() {
   describe('given a tag name', function() {
     describe('found on the page', function() {
       it('an array with three div objects', function() {
-        expect(xx('div')).to.have.length(3);
+        expect(xx('div')).to.have.length(4);
       })
 
       it('returns each html element with that tag name', function() {
@@ -53,8 +57,8 @@ describe('xx', function() {
     })
 
     describe('not found on the page', function() {
-      it('returns an empty array', function() {
-        expect(xx('img')).to.have.length(0);
+      it('returns an empty object', function() {
+        expect(xx('img')).to.be.empty;
       })
     })
   })
