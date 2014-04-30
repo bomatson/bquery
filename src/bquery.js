@@ -1,5 +1,4 @@
-function bQuery(name, context) {
-
+var bQuery = function (name, context) {
   results = [];
   results.context = setupContext(context);
 
@@ -15,6 +14,13 @@ function bQuery(name, context) {
   }
 
   return results
+}
+
+
+function clickEvent(callback) {
+  console.log('hi');
+//  for result in results
+//    result.addEventListener('click', callback);
 }
 
 function formatId(element) {
@@ -43,5 +49,7 @@ function findElementsFor(name, selector) {
       return document.getElementsByTagName(name);
   }
 }
+
+bQuery.click = clickEvent;
 
 var xx = bQuery;

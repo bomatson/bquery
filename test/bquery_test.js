@@ -16,7 +16,7 @@ describe('xx', function() {
       })
 
       it('contains the html in elem', function() {
-        expect(xx('#find-me')[0].outerHTML).to.equal("<div id=\"find-me\"></div>");
+        expect(xx('#find-me')[0].outerHTML).to.equal("<div id=\"find-me\">Find me</div>");
       })
     })
 
@@ -67,6 +67,13 @@ describe('xx', function() {
     describe('not found on the page', function() {
       it('has a length of 0', function() {
         expect(xx('img')).to.have.length(0);
+      })
+    })
+  })
+
+  describe('click handler', function() {
+    describe('when registered  on the retrieved element', function() {
+      xit('fires a callback when the element is clicked', function() {
       })
     })
   })
