@@ -1,5 +1,5 @@
 var bQuery = function (name, context) {
-  results = [];
+  var results = [];
   results.context = setupContext(context);
 
   if (!name) {
@@ -13,15 +13,22 @@ var bQuery = function (name, context) {
     results.selector = name;
   }
 
+  var clickEvent = function (callback) {
+
+    for (result in results) {
+      result.addEventListener('click', callback);
+    }
+    return this;
+  }
+
+  return {
+    click: clickEvent;
+  }
+
   return results
 }
 
 
-function clickEvent(callback) {
-  console.log('hi');
-//  for result in results
-//    result.addEventListener('click', callback);
-}
 
 function formatId(element) {
   return new Array(element).filter(function(val) { return (val !== null) });
